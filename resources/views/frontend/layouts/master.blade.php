@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/jquery.exzoom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/libs/toastr/build/toastr.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
@@ -109,9 +110,23 @@
     <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
     <!-- ex zoom js -->
     <script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>
+    <!-- toastr js -->
+    <script src="{{ asset('frontend/libs/toastr/build/toastr.min.js') }}"></script>
 
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+
+    <script>
+        // tampilkan error dengan toastr
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error('{{ $error }}', 'Error', {
+                    closeButton: true,
+                    progressBar: true,
+                });
+            @endforeach
+        @endif
+    </script>
 
 </body>
 
