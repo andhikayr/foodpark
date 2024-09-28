@@ -34,31 +34,31 @@
                     </div>
 
                     <!-- Menu positions -->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Menus (Leftsidebar and Topbar) Positon</h6>
+                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Posisi Menu (Sidebar Kiri dan Bar Atas)</h6>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="menu-position" value="fixed" id="fixed-check"
                             checked />
-                        <label class="form-check-label" for="fixed-check">Fixed</label>
+                        <label class="form-check-label" for="fixed-check">Tetap</label>
                     </div>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="menu-position" value="scrollable"
                             id="scrollable-check" />
-                        <label class="form-check-label" for="scrollable-check">Scrollable</label>
+                        <label class="form-check-label" for="scrollable-check">Dapat Discroll</label>
                     </div>
 
                     <!-- Left Sidebar-->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Left Sidebar Color</h6>
+                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Warna Sidebar Kiri</h6>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="leftbar-color" value="light" id="light-check" />
-                        <label class="form-check-label" for="light-check">Light</label>
+                        <label class="form-check-label" for="light-check">Terang</label>
                     </div>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="leftbar-color" value="dark" id="dark-check" checked/>
-                        <label class="form-check-label" for="dark-check">Dark</label>
+                        <label class="form-check-label" for="dark-check">Gelap</label>
                     </div>
 
                     <div class="form-check form-switch mb-1">
@@ -72,32 +72,30 @@
                     </div>
 
                     <!-- User info -->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Sidebar User Info</h6>
+                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Nyalakan Info User pada Sidebar ?</h6>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="sidebar-user" value="fixed" id="sidebaruser-check" />
-                        <label class="form-check-label" for="sidebaruser-check">Enable</label>
+                        <label class="form-check-label" for="sidebaruser-check">On / Off</label>
                     </div>
 
 
                     <!-- Topbar -->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Topbar</h6>
+                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Bar Atas</h6>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="topbar-color" value="dark" id="darktopbar-check"
                             checked />
-                        <label class="form-check-label" for="darktopbar-check">Dark</label>
+                        <label class="form-check-label" for="darktopbar-check">Gelap</label>
                     </div>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="topbar-color" value="light" id="lighttopbar-check" />
-                        <label class="form-check-label" for="lighttopbar-check">Light</label>
+                        <label class="form-check-label" for="lighttopbar-check">Terang</label>
                     </div>
 
-
                     <div class="d-grid mt-4">
-                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-                        <a href="https://1.envato.market/uboldadmin" class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
+                        <button class="btn btn-primary" id="resetBtn">Kembalikan ke Pengaturan Awal</button>
                     </div>
                 </div>
             </div>
