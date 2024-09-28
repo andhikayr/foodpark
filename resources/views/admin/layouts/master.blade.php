@@ -59,7 +59,7 @@
         <!-- END wrapper -->
 
         <!-- Right Sidebar -->
-        @include('admin.layouts.option_sidebar')
+        @include('admin.layouts.option-sidebar')
         <!-- /Right-bar -->
 
         <!-- Right bar overlay-->
