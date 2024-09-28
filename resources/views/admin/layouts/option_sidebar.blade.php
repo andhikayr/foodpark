@@ -30,22 +30,7 @@
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="layout-color" value="dark"
                             id="dark-mode-check" />
-                        <label class="form-check-label" for="dark-mode-check">Mode Gelar</label>
-                    </div>
-
-                    <!-- Menu positions -->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Posisi Menu (Sidebar Kiri dan Bar Atas)</h6>
-
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="menu-position" value="fixed" id="fixed-check"
-                            checked />
-                        <label class="form-check-label" for="fixed-check">Tetap</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="menu-position" value="scrollable"
-                            id="scrollable-check" />
-                        <label class="form-check-label" for="scrollable-check">Dapat Discroll</label>
+                        <label class="form-check-label" for="dark-mode-check">Mode Gelap</label>
                     </div>
 
                     <!-- Left Sidebar-->
@@ -71,17 +56,9 @@
                         <label class="form-check-label" for="gradient-check">Gradient</label>
                     </div>
 
-                    <!-- User info -->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Nyalakan Info User pada Sidebar ?</h6>
-
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="sidebar-user" value="fixed" id="sidebaruser-check" />
-                        <label class="form-check-label" for="sidebaruser-check">On / Off</label>
-                    </div>
-
 
                     <!-- Topbar -->
-                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Bar Atas</h6>
+                    <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Bar Atas (Tidak berpengaruh jika skema warna dan warna sidebar kiri diubah menjadi gelap)</h6>
 
                     <div class="form-check form-switch mb-1">
                         <input type="checkbox" class="form-check-input" name="topbar-color" value="dark" id="darktopbar-check"
@@ -103,3 +80,64 @@
 
     </div> <!-- end slimscroll-menu-->
 </div>
+
+@push('scripts')
+    <script>
+        // Simpan pengaturan tema ke Local Storage
+        function saveThemeSettings() {
+            const layoutColor = document.querySelector('input[name="layout-color"]:checked').value;
+            const leftbarColor = document.querySelector('input[name="leftbar-color"]:checked').value;
+            const topbarColor = document.querySelector('input[name="topbar-color"]:checked').value;
+
+            localStorage.setItem('layoutColor', layoutColor);
+            localStorage.setItem('leftbarColor', leftbarColor);
+            localStorage.setItem('topbarColor', topbarColor);
+        }
+
+        // Terapkan pengaturan tema yang disimpan
+        function applySavedThemeSettings() {
+            // Hapus atribut "checked" dari semua opsi
+            document.querySelectorAll('input[name="layout-color"], input[name="leftbar-color"], input[name="topbar-color"]')
+                .forEach(input => {
+                    input.checked = false;
+                });
+
+            const savedLayoutColor = localStorage.getItem('layoutColor');
+            const savedLeftbarColor = localStorage.getItem('leftbarColor');
+            const savedTopbarColor = localStorage.getItem('topbarColor');
+
+            if (savedLayoutColor) {
+                document.getElementById(savedLayoutColor + '-mode-check').checked = true;
+                document.body.setAttribute('data-theme', savedLayoutColor);
+            }
+            if (savedLeftbarColor) {
+                document.getElementById(savedLeftbarColor + '-check').checked = true;
+                document.body.setAttribute('data-leftbar-color', savedLeftbarColor);
+            }
+            if (savedTopbarColor) {
+                document.getElementById(savedTopbarColor + 'topbar-check').checked = true;
+                document.body.setAttribute('data-topbar-color', savedTopbarColor);
+            }
+        }
+
+        // Event listener untuk menyimpan pengaturan saat ada perubahan
+        document.querySelectorAll('input[name="layout-color"], input[name="leftbar-color"], input[name="topbar-color"]')
+            .forEach(input => {
+                input.addEventListener('change', saveThemeSettings);
+            });
+
+        // Terapkan pengaturan tema saat halaman dimuat
+        window.onload = applySavedThemeSettings;
+
+        // Reset ke pengaturan default
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            localStorage.removeItem('layoutColor');
+            localStorage.removeItem('leftbarColor');
+            localStorage.removeItem('topbarColor');
+
+            document.getElementById('light-mode-check').checked = true;
+            document.getElementById('light-check').checked = true;
+            document.getElementById('darktopbar-check').checked = true;
+        });
+    </script>
+@endpush
