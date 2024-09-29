@@ -14,11 +14,15 @@
                         <div class="fp__dashboard_menu">
                             <div class="dasboard_header">
                                 <div class="dasboard_header_img">
-                                    <img src="images/comment_img_2.png" alt="user" class="img-fluid w-100">
+                                    @if (Auth::user()->avatar)
+                                        <img src="{{ asset('frontend/uploads/profile_images/' . Auth::user()->avatar) }}" alt="user" class="img-fluid w-100">
+                                    @else
+                                        <img src="{{ asset('frontend/uploads/profile_images/transparent-profile.png') }}" alt="user" class="img-fluid w-100">
+                                    @endif
                                     <label for="upload"><i class="far fa-camera"></i></label>
                                     <input type="file" id="upload" hidden>
                                 </div>
-                                <h2>hasib ahmed</h2>
+                                <h2>{{ Auth::user()->name }}</h2>
                             </div>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
@@ -51,8 +55,11 @@
                                     aria-controls="v-pills-settings" aria-selected="false"><span><i
                                             class="fas fa-user-lock"></i></span> Change Password </button>
 
-                                <button class="nav-link" type="button"><span> <i class="fas fa-sign-out-alt"></i>
+                                <button class="nav-link" type="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span> <i class="fas fa-sign-out-alt"></i>
                                     </span> Logout</button>
+                                <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -97,7 +104,7 @@
                                             </h4>
 
                                             <div class="personal_info_text">
-                                                <p><span>Name:</span> Hasib Ahmed</p>
+                                                <p><span>Name:</span> {{ Auth::user()->name }}</p>
                                                 <p><span>Email:</span> hasibahmed@gmail.com</p>
                                                 <p><span>Phone:</span> 023 434 54354</p>
                                                 <p><span>Address:</span> 7232 Broadway Suite 308, Jackson Heights,
@@ -832,7 +839,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_1.jpg" alt="menu"
+                                                            <img src="{{ asset('frontend/images/menu2_img_1.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">Biryani</a>
                                                         </div>
@@ -861,7 +868,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_2.jpg" alt="menu"
+                                                            <img src="{{ asset('frontend/images/menu2_img_2.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">chicken</a>
                                                         </div>
@@ -889,7 +896,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_3.jpg" alt="menu"
+                                                            <img src="{{ asset('frontend/images/menu2_img_3.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">grill</a>
                                                         </div>
@@ -918,7 +925,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_4.jpg" alt="menu"
+                                                            <img src="{{ asset('frontend/images/menu2_img_4.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">chicken</a>
                                                         </div>
@@ -946,7 +953,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_5.jpg" alt="menu"
+                                                            <img src="{{ asset('frontend/images/menu2_img_5.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">chicken</a>
                                                         </div>
@@ -974,7 +981,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_6.jpg" alt="menu"
+                                                            <img src="{{ asset('frontend/images/menu2_img_6.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">Biryani</a>
                                                         </div>
@@ -1038,7 +1045,7 @@
                                         <div class="fp__review_area">
                                             <div class="fp__comment pt-0 mt_20">
                                                 <div class="fp__single_comment m-0 border-0">
-                                                    <img src="images/menu1.png" alt="review" class="img-fluid">
+                                                    <img src="{{ asset('frontend/images/menu1.png') }}" alt="review" class="img-fluid">
                                                     <div class="fp__single_comm_text">
                                                         <h3><a href="#">mamun ahmed shuvo</a> <span>29 oct 2022 </span>
                                                         </h3>
@@ -1057,7 +1064,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="fp__single_comment">
-                                                    <img src="images/menu2.png" alt=" review" class="img-fluid">
+                                                    <img src="{{ asset('frontend/images/menu2.png') }}" alt=" review" class="img-fluid">
                                                     <div class="fp__single_comm_text">
                                                         <h3><a href="#">asaduzzaman khan</a> <span>29 oct 2022 </span>
                                                         </h3>
@@ -1076,7 +1083,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="fp__single_comment">
-                                                    <img src="images/menu3.png" alt="review" class="img-fluid">
+                                                    <img src="{{ asset('frontend/images/menu3.png') }}" alt="review" class="img-fluid">
                                                     <div class="fp__single_comm_text">
                                                         <h3><a href="#">ariful islam rupom</a> <span>29 oct 2022 </span>
                                                         </h3>
@@ -1095,7 +1102,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="fp__single_comment">
-                                                    <img src="images/menu4.png" alt="review" class="img-fluid">
+                                                    <img src="{{ asset('frontend/images/menu4.png') }}" alt="review" class="img-fluid">
                                                     <div class="fp__single_comm_text">
                                                         <h3><a href="#">ali ahmed jakir</a> <span>29 oct 2022 </span>
                                                         </h3>
