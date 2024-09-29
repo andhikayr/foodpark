@@ -5,7 +5,7 @@
                 <h1>@yield('title')</h1>
                 <ul>
                     <li><a href="{{ url('/') }}">home</a></li>
-                    <li><a href="#">@yield('title')</a></li>
+                    <li class="text-white">@yield('title')</li>
                 </ul>
             </div>
         </div>
