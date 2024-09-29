@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Alert::success('Sukses', 'Akun anda telah terdaftar!');
+        Alert::success('Sukses!', 'Akun anda telah terdaftar!');
         return redirect(route('dashboard', absolute: false));
     }
 }

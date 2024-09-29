@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PasswordResetLinkController extends Controller
 {
@@ -36,6 +37,7 @@ class PasswordResetLinkController extends Controller
             $request->only('email')
         );
 
+        Alert::success('Pesan Reset Password Terkirim!', 'Silahkan cek email anda');
         return $status == Password::RESET_LINK_SENT
                     ? back()->with('status', __($status))
                     : back()->withInput($request->only('email'))
