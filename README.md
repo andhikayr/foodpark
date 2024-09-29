@@ -5,7 +5,7 @@
 Aplikasi pelayanan restoran berbasis website menggunakan [laravel](https://laravel.com) berdasarkan [kursus udemy berikut](https://www.udemy.com/course/build-complete-laravel-restaurant-and-food-ordering-ecommerce-system/) yang menggunakan laravel 10, dengan penyesuaian sebagai berikut :
 
 - Menggunakan template website dari [Ubold](https://coderthemes.com/ubold/) untuk halaman panel admin
-- Mengupgrade ke laravel 11 (materi kursus yang digunakan menggunakan laravel 10)
-- Menggunakan XAMPP sebagai server lokal ketimbang laragon
+- Mengupgrade ke [Laravel 11](https://laravel.com/docs/11.x/releases) (materi kursus yang digunakan menggunakan [Laravel 10](https://laravel.com/docs/10.x/releases))
+- Menggunakan [XAMPP](https://www.apachefriends.org/index.html) sebagai server lokal ketimbang [Laragon](https://laragon.org/)
 
 Repositori ini digunakan untuk mempelajari mengenai laravel dengan menerapkannya pada proyek ini dan mencatat semua perubahan pada aplikasi ini.
