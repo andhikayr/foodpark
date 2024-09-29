@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisteredUserController extends Controller
 {
@@ -45,6 +46,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        Alert::success('Sukses', 'Akun anda telah terdaftar!');
         return redirect(route('dashboard', absolute: false));
     }
 }
