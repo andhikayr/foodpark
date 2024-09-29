@@ -6,7 +6,7 @@
 
 @section('content')
     @include('frontend.components.breadcrumb')
-    <section class="fp__signup" style="background: url(images/login_bg.jpg);">
+    <section class="fp__signup" style="background: url({{ asset('frontend/images/login_bg.jpg') }});">
         <div class="fp__signup_overlay pt_125 xs_pt_95 pb_100 xs_pb_70">
             <div class=" container">
                 <div class="row wow fadeInUp" data-wow-duration="1s">
