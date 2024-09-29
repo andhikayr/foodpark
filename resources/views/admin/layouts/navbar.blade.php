@@ -12,9 +12,9 @@
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>My Account</span>
+                        <span>Profil Saya</span>
                     </a>
 
                     <!-- item-->

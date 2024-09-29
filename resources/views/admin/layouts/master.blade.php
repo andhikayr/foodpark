@@ -12,6 +12,11 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.ico') }}">
 
+        <!-- Dropify css -->
+        <link href="{{ asset('admin/assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet">
+        <!-- toastr css -->
+        <link href="{{ asset('admin/assets/libs/toastr/build/toastr.min.css') }}" rel="stylesheet">
+
         <!-- Bootstrap css -->
         <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- App css -->
@@ -20,6 +25,12 @@
         <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Head js -->
         <script src="{{ asset('admin/assets/js/head.js') }}"></script>
+
+        <style>
+            .toast-error {
+                --ct-toast-background-color: #ff0000 !important;
+            }
+        </style>
 
     </head>
 
@@ -44,7 +55,13 @@
             <!-- ============================================================== -->
 
             <div class="content-page">
-                @yield('content') <!-- content -->
+                <div class="content">
+
+                    <!-- Start Content-->
+                    @yield('content')
+                    <!-- container -->
+
+                </div> <!-- content -->
 
                 <!-- Footer Start -->
                 @include('admin.layouts.footer')
@@ -75,6 +92,24 @@
 
         <!-- App js-->
         <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+        <!-- Dropify js -->
+        <script src="{{ asset('admin/assets/libs/dropify/js/dropify.min.js') }}"></script>
+
+        <!-- toastr js -->
+        <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
+
+        <script>
+            // tampilkan error dengan toastr
+            toastr.options.timeOut = 6000;
+            toastr.options.extendedTimeOut = 8000;
+            toastr.options.progressBar = true;
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error('{{ $error }}');
+                @endforeach
+            @endif
+        </script>
 
         @stack('scripts')
 

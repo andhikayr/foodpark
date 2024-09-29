@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-<div class="content">
-
-    <!-- Start Content-->
     <div class="container-fluid">
 
         <!-- start page title -->
@@ -104,6 +101,4 @@
         <!-- end row-->
 
     </div> <!-- container -->
-
-</div>
 @endsection
