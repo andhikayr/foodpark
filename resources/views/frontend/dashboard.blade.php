@@ -28,7 +28,7 @@
                                 aria-orientation="vertical">
                                 <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                                    aria-selected="true"><span><i class="fas fa-user"></i></span> Parsonal Info</button>
+                                    aria-selected="true"><span><i class="fas fa-user"></i></span> Info Pribadi</button>
 
                                 <button class="nav-link" id="v-pills-address-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-address" type="button" role="tab"
@@ -53,7 +53,7 @@
                                 <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-settings" type="button" role="tab"
                                     aria-controls="v-pills-settings" aria-selected="false"><span><i
-                                            class="fas fa-user-lock"></i></span> Change Password </button>
+                                            class="fas fa-user-lock"></i></span> Ubah Password </button>
 
                                 <button class="nav-link" type="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span> <i class="fas fa-sign-out-alt"></i>
                                     </span> Logout</button>
@@ -70,7 +70,7 @@
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                     aria-labelledby="v-pills-home-tab">
                                     <div class="fp_dashboard_body">
-                                        <h3>Welcome to your Profile</h3>
+                                        <h3>Selamat datang di halaman profilmu</h3>
 
                                         <div class="fp__dsahboard_overview">
                                             <div class="row">
@@ -96,47 +96,35 @@
                                         </div>
 
                                         <div class="fp_dash_personal_info">
-                                            <h4>Parsonal Information
+                                            <h4>Informasi Pribadi
                                                 <a class="dash_info_btn">
                                                     <span class="edit">edit</span>
-                                                    <span class="cancel">cancel</span>
+                                                    <span class="cancel">batal</span>
                                                 </a>
                                             </h4>
 
                                             <div class="personal_info_text">
-                                                <p><span>Name:</span> {{ Auth::user()->name }}</p>
-                                                <p><span>Email:</span> hasibahmed@gmail.com</p>
-                                                <p><span>Phone:</span> 023 434 54354</p>
-                                                <p><span>Address:</span> 7232 Broadway Suite 308, Jackson Heights,
-                                                    11372, NY, United States </p>
+                                                <p><span>Nama:</span> {{ Auth::user()->name }}</p>
+                                                <p><span>Email:</span> {{ Auth::user()->email }}</p>
                                             </div>
 
                                             <div class="fp_dash_personal_info_edit comment_input p-0">
-                                                <form>
+                                                <form action="{{ route('frontend.profile.update') }}" method="POST">
+                                                    @csrf
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="fp__comment_imput_single">
-                                                                <label>name</label>
-                                                                <input type="text" placeholder="Name">
+                                                                <label>nama</label>
+                                                                <input type="text" placeholder="Nama" name="name" value="{{ Auth::user()->name }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-6 col-lg-6">
                                                             <div class="fp__comment_imput_single">
                                                                 <label>email</label>
-                                                                <input type="email" placeholder="Email">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-6">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>phone</label>
-                                                                <input type="text" placeholder="Phone">
+                                                                <input type="email" placeholder="Email" name="email" value="{{ Auth::user()->email }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-12">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>address</label>
-                                                                <textarea rows="4" placeholder="Address"></textarea>
-                                                            </div>
                                                             <button type="submit" class="common_btn">submit</button>
                                                         </div>
                                                     </div>
@@ -1130,30 +1118,30 @@
                                     aria-labelledby="v-pills-settings-tab">
                                     <div class="fp_dashboard_body fp__change_password">
                                         <div class="fp__review_input">
-                                            <h3>change password</h3>
+                                            <h3>ubah password</h3>
                                             <div class="comment_input pt-0">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-xl-6">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>Current Password</label>
-                                                                <input type="password" placeholder="Current Password">
-                                                            </div>
+                                                <form action="{{ route('frontend.password.update') }}" method="POST">
+                                                    @csrf
+                                                    <div class="col-xl-12">
+                                                        <div class="fp__comment_imput_single">
+                                                            <label>Password Saat Ini</label>
+                                                            <input type="password" placeholder="Password Saat Ini" name="current_password" required>
                                                         </div>
-                                                        <div class="col-xl-6">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>New Password</label>
-                                                                <input type="password" placeholder="New Password">
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="fp__comment_imput_single">
+                                                            <label>Password Baru</label>
+                                                            <input type="password" placeholder="Password Baru" name="password" minlength="8" required>
+                                                            <p>* panjang password baru minimal 8 karakter</p>
                                                         </div>
-                                                        <div class="col-xl-12">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>confirm Password</label>
-                                                                <input type="password" placeholder="Confirm Password">
-                                                            </div>
-                                                            <button type="submit"
-                                                                class="common_btn mt_20">submit</button>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="fp__comment_imput_single">
+                                                            <label>Konfirmasi Password</label>
+                                                            <input type="password" placeholder="Konfirmasi Password" name="password_confirmation" minlength="8" required>
                                                         </div>
+                                                        <button type="submit"
+                                                            class="common_btn mt_20">submit</button>
                                                     </div>
                                                 </form>
                                             </div>
