@@ -20,7 +20,9 @@
                                         <img src="{{ asset('frontend/uploads/profile_images/transparent-profile.png') }}" alt="user" class="img-fluid w-100">
                                     @endif
                                     <label for="upload"><i class="far fa-camera"></i></label>
-                                    <input type="file" id="upload" hidden>
+                                    <form id="avatar_upload">
+                                        <input type="file" id="upload" name="avatar" accept="image/png, image/jpeg, image/jpg" hidden>
+                                    </form>
                                 </div>
                                 <h2>{{ Auth::user()->name }}</h2>
                             </div>
@@ -1157,3 +1159,28 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('#upload').on('change', function () {
+                let form = $('#avatar_upload')[0];
+                let formData = new FormData(form);
+
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route("frontend.avatar.update") }}',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        window.location.reload();
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

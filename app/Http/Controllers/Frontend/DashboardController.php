@@ -54,4 +54,25 @@ class DashboardController extends Controller
         Alert::success('Sukses', 'Password anda telah berhasil diperbarui');
         return back();
     }
+
+    public function updateAvatar(Request $request) {
+        $request->validate([
+            'avatar' => 'required|image|max:2048|mimes:png,jpg,jpeg',
+        ]);
+
+        $user = Auth::user();
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar && file_exists('frontend/uploads/profile_images/' . $user->avatar)) {
+                unlink('frontend/uploads/profile_images/' . $user->avatar);
+            }
+            $avatar = $request->file('avatar');
+            $avatarName = 'profile_image_' . date('YmdHis') . '.' . $avatar->extension();
+            $avatar->move('frontend/uploads/profile_images', $avatarName);
+            $user->avatar = $avatarName;
+            $user->save();
+        }
+
+        Alert::success('Sukses', 'Gambar profil anda telah berhasil diubah');
+        return response()->json(['status' => 'success', 'avatar_url' => asset('frontend/uploads/profile_images/' . $user->avatar)]);
+    }
 }

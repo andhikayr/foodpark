@@ -11,6 +11,7 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
     Route::post('/update-profile', 'updateProfile')->name('frontend.profile.update');
     Route::post('/update-password', 'updatePassword')->name('frontend.password.update');
+    Route::post('/update-avatar', 'updateAvatar')->name('frontend.avatar.update');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
