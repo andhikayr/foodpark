@@ -26,12 +26,7 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item notify-item"><i class="fe-log-out"></i>Logout</a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
-                        @csrf
-                    </form>
-
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item notify-item"><i class="fe-log-out"></i>Logout</a>
                 </div>
             </li>
 
