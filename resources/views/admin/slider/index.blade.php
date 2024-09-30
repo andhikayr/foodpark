@@ -60,7 +60,7 @@
                                             <a href="{{ route('admin.slider.edit', $item->id) }}"
                                                 class="btn btn-primary btn-sm">Edit</a>
                                             <a href="{{ route('admin.slider.destroy', $item->id) }}"
-                                                class="btn btn-danger btn-sm">Hapus</a>
+                                                class="btn btn-danger btn-sm" data-confirm-delete="true">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach

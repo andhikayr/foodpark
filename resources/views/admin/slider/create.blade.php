@@ -31,41 +31,44 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.slider.store') }}" method="post">
+                        <form action="{{ route('admin.slider.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Judul</label>
+                                        <label for="title" class="form-label">Judul *</label>
                                         <input type="text" id="title" name="title" class="form-control" placeholder="Judul" maxlength="255" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sub_title" class="form-label">Sub Judul</label>
+                                        <label for="sub_title" class="form-label">Sub Judul *</label>
                                         <input type="text" id="sub_title" name="sub_title" class="form-control" placeholder="Sub Judul" maxlength="255" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="deskripsi" class="form-label">Deskripsi</label>
-                                <input type="text" id="deskripsi" name="deskripsi" class="form-control" placeholder="Deskripsi" required>
+                                <label for="description" class="form-label">Deskripsi *</label>
+                                <input type="text" id="description" name="description" class="form-control" placeholder="Deskripsi" required>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Gambar Produk</label>
+                                <label for="image" class="form-label">Gambar Produk *</label>
                                 <input type="file" id="image" name="image" class="dropify" data-max-file-size="3M" data-allowed-file-extensions="png jpg jpeg" accept="image/png, image/jpeg">
                                 <span class="help-block"><small>* ukuran gambar maksimal 3072 KB (3 MB)</small></span>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="offer" class="form-label">Diskon (Persentase)</label>
-                                        <input type="number" id="offer" name="offer" class="form-control" placeholder="Diskon (Persentase)" required>
+                                        <label for="offer" class="form-label">Diskon (Persentase) *</label>
+                                        <div class="input-group">
+                                            <input type="number" id="offer" name="offer" class="form-control" placeholder="Diskon (Persentase)" min="1" max="100" required>
+                                            <span class="input-group-text">%</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="button_link" class="form-label">Link (Tombol)</label>
+                                        <label for="button_link" class="form-label">Link (Tombol) *</label>
                                         <input type="text" id="button_link" name="button_link" class="form-control" placeholder="Link (Tombol)" maxlength="255" required>
                                     </div>
                                 </div>
@@ -96,6 +99,14 @@
             error: {
                 'fileSize': 'Ukuran file terlalu besar. Maksimal 3 MB'
             }
+        });
+
+        $(document).ready(function () {
+            $('#offer').on('input', function () {
+                if (this.value.length > 3) {
+                    this.value = this.value.slice(0, 3);
+                }
+            })
         });
     </script>
 @endpush
