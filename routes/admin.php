@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('index');
+    Route::get('about', function () {
+        return view('admin.about');
+    })->name(name: 'about');
     Route::get('logout', [AuthController::class, 'logout'])->name(name: 'logout');
 
     // Profile
