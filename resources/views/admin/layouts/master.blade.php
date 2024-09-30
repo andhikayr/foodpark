@@ -4,36 +4,42 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>@yield('title') | FoodPark Dashboard</title>
+        <title>@yield('title') | Food Park</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Andhika Yr" name="author" />
+        <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.ico') }}">
 
-        <!-- Dropify css -->
-        <link href="{{ asset('admin/assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet">
-        <!-- toastr css -->
-        <link href="{{ asset('admin/assets/libs/toastr/build/toastr.min.css') }}" rel="stylesheet">
-        <!-- DataTables css -->
-        <link href="{{ asset('admin/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" type="text/css" />
-        <link href="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Plugins css -->
+        <link href="{{ asset('admin/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('admin/assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap css -->
         <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- App css -->
         <link href="{{ asset('admin/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style"/>
-        <!-- icons -->
+        <!-- Toastr css -->
+        <link href="{{ asset('admin/assets/libs/toastr/build/toastr.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- fontawesome 5.11.2 -->
+        <link href="{{ asset('admin/assets/libs/font-awesome-5.11.2/all.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Icons css -->
         <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Dropify css -->
+        <link href="{{ asset('admin/assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet">
+        <!-- Iconpicker css -->
+        <link href="{{ asset('admin/assets/libs/IconPicker/iconpicker-1.5.0.css') }}" rel="stylesheet">
+        <!-- Datatables css -->
+        <link href="{{ asset('admin/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet">
+        <!-- Select2 css -->
+        <link href="{{ asset('admin/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin/assets/libs/select2/css/select2-bootstrap-5-theme.min.css') }}" rel="stylesheet" />
+        <!-- Summernote css -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
         <!-- Head js -->
         <script src="{{ asset('admin/assets/js/head.js') }}"></script>
-
-        <style>
-            .toast-error {
-                --ct-toast-background-color: #ff0000 !important;
-            }
-        </style>
 
     </head>
 
@@ -50,7 +56,20 @@
             <!-- end Topbar -->
 
             <!-- ========== Left Sidebar Start ========== -->
-            @include('admin.layouts.sidebar')
+            <div class="left-side-menu">
+
+                <div class="h-100" data-simplebar>
+
+                    <!--- Sidemenu -->
+                    @include('admin.layouts.sidebar')
+                    <!-- End Sidebar -->
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
             <!-- Left Sidebar End -->
 
             <!-- ============================================================== -->
@@ -81,35 +100,60 @@
         <!-- END wrapper -->
 
         <!-- Right Sidebar -->
-        @include('admin.layouts.option-sidebar')
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-bordered nav-justified" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link py-2 active" data-bs-toggle="tab" href="#settings-tab" role="tab">
+                            <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                @include('admin.layouts.option-sidebar')
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
         <!-- /Right-bar -->
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <!-- jQuery js -->
-        <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
-
-        <!-- toastr js -->
-        <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
-
-        <!-- Datatables init -->
-        <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script>
-
-        <!-- Required datatable js -->
-        <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-        <script src="{{ asset('admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
-
         <!-- Vendor js -->
         <script src="{{ asset('admin/assets/js/vendor.min.js') }}"></script>
+
+        <!-- jQuery js -->
+        <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
 
         <!-- Dashboar 1 init js-->
         <script src="{{ asset('admin/assets/js/pages/dashboard-1.init.js') }}"></script>
 
         <!-- App js-->
         <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+        <!-- Toastr js -->
+        <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
+
+        <!-- Iconpicker js -->
+        <script src="{{ asset('admin/assets/libs/IconPicker/iconpicker-1.5.0.js') }}"></script>
+
+        <!-- Select2 js -->
+        <script src="{{ asset('admin/assets/libs/select2/js/select2.min.js') }}"></script>
+
+        <!-- Summernote js -->
+        <script src="{{ asset('admin/assets/libs/summernote/summernote-lite.min.js') }}"></script>
+
+        <!-- Datatables js -->
+        <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+
+        <!-- Init form advanced js-->
+        <script src="{{ asset('admin/assets/js/pages/form-advanced.init.js') }}"></script>
 
         <script>
             // Terapkan pengaturan tema yang disimpan sebelum halaman selesai dimuat
@@ -129,13 +173,13 @@
                 }
             });
 
-            // tampilkan error dengan toastr
-            toastr.options.timeOut = 6000;
-            toastr.options.extendedTimeOut = 8000;
+            // toastr
             toastr.options.progressBar = true;
+            toastr.options.closeButton = true;
+
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
-                    toastr.error('{{ $error }}');
+                    toastr.error("{{ $error }}")
                 @endforeach
             @endif
         </script>
