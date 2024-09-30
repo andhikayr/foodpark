@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Slider
+    Produk (Slider)
 @endsection
 
 @section('content')
@@ -14,10 +14,10 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Slider</li>
+                            <li class="breadcrumb-item active">Produk (Slider)</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Slider</h4>
+                    <h4 class="page-title">Produk (Slider)</h4>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Semua Slider</h4>
+                        <h4>Semua Produk (Slider)</h4>
                         <a href="{{ route('admin.slider.create') }}" class="btn btn-primary">Tambah Baru</a>
                     </div>
                     <div class="card-body table-responsive">
