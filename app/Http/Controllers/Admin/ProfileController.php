@@ -46,9 +46,9 @@ class ProfileController extends Controller
 
     public function updatePassword(Request $request) : RedirectResponse {
         $request->validate([
-            'current_password' => 'required|current_password',
-            'password' => 'required|min:8|confirmed',
-            'password_confirmation' => 'required|min:8',
+            'current_password' => 'required|current_password|max:255',
+            'password' => 'required|min:8|confirmed|max:255',
+            'password_confirmation' => 'required|min:8|max:255',
         ], [
             'password.confirmed' => 'Password baru dan konfirmasi password yang anda buat tidak cocok',
             'current_password.current_password' => 'Password lama anda tidak sesuai',

@@ -61,7 +61,7 @@
                                 <div class="mb-3">
                                     <label for="current_password" class="form-label">Password Saat Ini</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="current_password" class="form-control" name="current_password" placeholder="Masukkan password lama anda" required>
+                                        <input type="password" id="current_password" class="form-control" name="current_password" placeholder="Masukkan password lama anda" maxlength="255" required>
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
@@ -71,7 +71,7 @@
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password Baru</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password baru anda" minlength="8" required>
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password baru anda" minlength="8" maxlength="255" required>
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
@@ -82,7 +82,7 @@
                                 <div class="mb-3">
                                     <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Konfirmasi ulang password anda" minlength="8" required>
+                                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Konfirmasi ulang password anda" minlength="8" maxlength="255" required>
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
