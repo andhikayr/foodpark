@@ -16,6 +16,9 @@
         <link href="{{ asset('admin/assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet">
         <!-- toastr css -->
         <link href="{{ asset('admin/assets/libs/toastr/build/toastr.min.css') }}" rel="stylesheet">
+        <!-- DataTables css -->
+        <link href="{{ asset('admin/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" type="text/css" />
+        <link href="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap css -->
         <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -84,6 +87,21 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
+        <!-- jQuery js -->
+        <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
+
+        <!-- toastr js -->
+        <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
+
+        <!-- Datatables init -->
+        <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script>
+
+        <!-- Required datatable js -->
+        <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+
         <!-- Vendor js -->
         <script src="{{ asset('admin/assets/js/vendor.min.js') }}"></script>
 
@@ -93,13 +111,24 @@
         <!-- App js-->
         <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
 
-        <!-- Dropify js -->
-        <script src="{{ asset('admin/assets/libs/dropify/js/dropify.min.js') }}"></script>
-
-        <!-- toastr js -->
-        <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
-
         <script>
+            // Terapkan pengaturan tema yang disimpan sebelum halaman selesai dimuat
+            document.addEventListener('DOMContentLoaded', function() {
+                const savedLayoutColor = localStorage.getItem('layoutColor');
+                const savedLeftbarColor = localStorage.getItem('leftbarColor');
+                const savedTopbarColor = localStorage.getItem('topbarColor');
+
+                if (savedLayoutColor) {
+                    document.body.setAttribute('data-theme', savedLayoutColor);
+                }
+                if (savedLeftbarColor) {
+                    document.body.setAttribute('data-leftbar-color', savedLeftbarColor);
+                }
+                if (savedTopbarColor) {
+                    document.body.setAttribute('data-topbar-color', savedTopbarColor);
+                }
+            });
+
             // tampilkan error dengan toastr
             toastr.options.timeOut = 6000;
             toastr.options.extendedTimeOut = 8000;

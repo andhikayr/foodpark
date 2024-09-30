@@ -101,6 +101,10 @@
 @endsection
 
 @push('scripts')
+
+    <!-- Dropify js -->
+    <script src="{{ asset('admin/assets/libs/dropify/js/dropify.min.js') }}"></script>
+
     <script>
         $('.dropify').dropify({
             messages: {
