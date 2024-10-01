@@ -59,9 +59,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="offer" class="form-label">Diskon (Persentase) *</label>
+                                        <label for="offer" class="form-label">Diskon (Persentase)</label>
                                         <div class="input-group">
-                                            <input type="number" id="offer" name="offer" class="form-control" placeholder="Diskon (Persentase)" min="1" max="100" required>
+                                            <input type="number" id="offer" name="offer" class="form-control" placeholder="Diskon (Persentase)" min="1" max="100">
                                             <span class="input-group-text">%</span>
                                         </div>
                                     </div>

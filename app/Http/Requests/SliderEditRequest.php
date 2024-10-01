@@ -26,7 +26,7 @@ class SliderEditRequest extends FormRequest
             'sub_title' => 'required|max:255',
             'description' => 'required',
             'image' => 'image|max:3072|mimes:png,jpg,jpeg',
-            'offer' => 'required|min:1|max:100',
+            'offer' => 'min:1|max:100',
             'button_link' => 'required',
         ];
     }

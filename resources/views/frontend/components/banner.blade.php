@@ -10,7 +10,9 @@
                                     <div class="fp__banner_img wow fadeInLeft" data-wow-duration="1s">
                                         <div class="img">
                                             <img src="{{ asset('admin/uploads/slider_images/' . $item->image) }}" alt="food item" class="img-fluid w-100">
-                                            <span> {{ $item->offer }}% off </span>
+                                            @if ($item->offer)
+                                                <span> {{ $item->offer }}% off </span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
