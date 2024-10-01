@@ -51,16 +51,23 @@
                                         <td>{{ $item->title }}</td>
                                         <td>
                                             @if ($item->status == 1)
-                                                <span class="badge bg-success">Tersedia</span>
+                                                <span class="badge bg-success">Aktif</span>
                                             @else
-                                                <span class="badge bg-danger">Tidak Tersedia</span>
+                                                <span class="badge bg-danger">Tidak Aktif</span>
                                             @endif
                                         </td>
                                         <td>
+                                            <form action="{{ route('admin.slider.status', $item->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PUT')
+                                                <button class="btn btn-{{ $item->status == 1 ? 'danger' : 'success' }} btn-sm" title="{{ $item->status == 1 ? 'Nonaktifkan produk ini' : 'Aktifkan produk ini' }}" type="submit">
+                                                    <i class="fas fa-{{ $item->status == 1 ? 'times' : 'check' }}"></i>
+                                                </button>
+                                            </form>
                                             <a href="{{ route('admin.slider.edit', $item->id) }}"
-                                                class="btn btn-primary btn-sm">Edit</a>
+                                                class="btn btn-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.slider.destroy', $item->id) }}"
-                                                class="btn btn-danger btn-sm" data-confirm-delete="true">Hapus</a>
+                                                class="btn btn-danger btn-sm" data-confirm-delete="true" title="Hapus"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

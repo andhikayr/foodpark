@@ -21,5 +21,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(
     });
 
     // Slider
+    Route::put('slider/status/{id}', [SliderController::class, 'updateStatus'])->name('slider.status');
     Route::resource('slider', SliderController::class);
 });

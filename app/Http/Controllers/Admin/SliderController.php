@@ -7,6 +7,7 @@ use App\Http\Requests\SliderCreateRequest;
 use App\Http\Requests\SliderEditRequest;
 use App\Models\Slider;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -52,6 +53,27 @@ class SliderController extends Controller
 
         Alert::success('Sukses', 'Produk (slider) baru berhasil ditambahkan');
         return to_route('admin.slider.index');
+    }
+
+    public function updateStatus(Request $request) : RedirectResponse
+    {
+        $slider = Slider::findOrFail($request->id);
+
+        switch ($slider->status) {
+            case 1:
+                $slider->status = 0;
+                break;
+            case 0:
+                $slider->status = 1;
+                break;
+            default:
+                break;
+        }
+
+        $slider->save();
+
+        Alert::success('Sukses', 'Status untuk produk yang dipilih telah diperbarui');
+        return back();
     }
 
     /**
