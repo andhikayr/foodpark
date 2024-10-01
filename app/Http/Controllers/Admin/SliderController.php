@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderCreateRequest;
+use App\Http\Requests\SliderEditRequest;
 use App\Models\Slider;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -66,15 +67,36 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SliderEditRequest $sliderEditRequest, string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        if ($sliderEditRequest->hasFile('image')) {
+            if ($slider->image && file_exists('admin/uploads/slider_images/' . $slider->image)) {
+                unlink('admin/uploads/slider_images/' . $slider->image);
+            }
+            $image = $sliderEditRequest->file('image');
+            $imageName = 'slider_image_' . date('YmdHis') . '.' . $image->extension();
+            $image->move('admin/uploads/slider_images', $imageName);
+            $slider->image = $imageName;
+        }
+
+        $slider->update([
+            'title' => $sliderEditRequest->title,
+            'sub_title' => $sliderEditRequest->sub_title,
+            'description' => $sliderEditRequest->description,
+            'offer' => $sliderEditRequest->offer,
+            'button_link' => $sliderEditRequest->button_link,
+        ]);
+
+        Alert::success('Sukses', 'Produk (slider) telah berhasil diubah');
+        return to_route('admin.slider.index');
     }
 
     /**
