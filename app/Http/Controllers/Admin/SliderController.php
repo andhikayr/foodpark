@@ -100,8 +100,8 @@ class SliderController extends Controller
     {
         $slider = Slider::findOrFail($id);
         if ($sliderEditRequest->hasFile('image')) {
-            if ($slider->image && file_exists('admin/uploads/slider_images/' . $slider->image)) {
-                unlink('admin/uploads/slider_images/' . $slider->image);
+            if ($slider->image && file_exists("admin/uploads/slider_images/$slider->image")) {
+                unlink("admin/uploads/slider_images/$slider->image");
             }
             $image = $sliderEditRequest->file('image');
             $imageName = 'slider_image_' . date('YmdHis') . '.' . $image->extension();
@@ -127,8 +127,8 @@ class SliderController extends Controller
     public function destroy(string $id)
     {
         $slider = Slider::findOrFail($id);
-        if ($slider->image && file_exists('admin/uploads/slider_images/' . $slider->image)) {
-            unlink('admin/uploads/slider_images/' . $slider->image);
+        if ($slider->image && file_exists("admin/uploads/slider_images/$slider->image")) {
+            unlink("admin/uploads/slider_images/$slider->image");
         }
         $slider->delete();
         Alert::success('Sukses', 'Produk (slider) yang anda pilih berhasil di hapus');

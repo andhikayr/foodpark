@@ -46,7 +46,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <img src="{{ asset('admin/uploads/slider_images/' . $item->image) }}" alt="" width="100">
+                                            <img src="{{ asset('admin/uploads/slider_images/' . $item->image) }}" alt="" height="100" width="100">
                                         </td>
                                         <td>{{ $item->title }}</td>
                                         <td>
