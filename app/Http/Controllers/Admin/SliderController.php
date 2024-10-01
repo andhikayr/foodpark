@@ -127,6 +127,9 @@ class SliderController extends Controller
     public function destroy(string $id)
     {
         $slider = Slider::findOrFail($id);
+        if ($slider->image && file_exists('admin/uploads/slider_images/' . $slider->image)) {
+            unlink('admin/uploads/slider_images/' . $slider->image);
+        }
         $slider->delete();
         Alert::success('Sukses', 'Produk (slider) yang anda pilih berhasil di hapus');
         return to_route('admin.slider.index');
