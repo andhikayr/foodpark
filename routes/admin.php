@@ -25,6 +25,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(
     Route::put('slider/status/{id}', [SliderController::class, 'updateStatus'])->name('slider.status');
     Route::resource('slider', SliderController::class);
 
-    Route::put('why-choose-us/status/{id}', [SliderController::class, 'updateStatus'])->name('slider.status');
+    Route::put('why-choose-us/title-update', [WhyChooseUsController::class, 'updateTitle'])->name('why-choose-us.title-update');
+    Route::put('why-choose-us/status/{id}', [WhyChooseUsController::class, 'updateStatus'])->name('why-choose-us.status');
     Route::resource('why-choose-us', WhyChooseUsController::class);
 });
