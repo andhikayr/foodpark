@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\WhyChooseUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(function () {
@@ -23,4 +24,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(
     // Slider
     Route::put('slider/status/{id}', [SliderController::class, 'updateStatus'])->name('slider.status');
     Route::resource('slider', SliderController::class);
+
+    Route::put('why-choose-us/status/{id}', [SliderController::class, 'updateStatus'])->name('slider.status');
+    Route::resource('why-choose-us', WhyChooseUsController::class);
 });

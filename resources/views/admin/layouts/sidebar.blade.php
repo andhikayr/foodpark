@@ -18,8 +18,15 @@
 
                 <li>
                     <a href="{{ route('admin.slider.index') }}">
-                        <i class="mdi mdi-calendar"></i>
-                        <span> Slider </span>
+                        <i class="fas fa-list"></i>
+                        <span> Produk (Slider) </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.why-choose-us.index') }}">
+                        <i class="fas fa-font"></i>
+                        <span> "Mengapa Memilih Kita" </span>
                     </a>
                 </li>
 
