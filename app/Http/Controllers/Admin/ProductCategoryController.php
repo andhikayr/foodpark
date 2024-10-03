@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductCategory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Str;
 
 class ProductCategoryController extends Controller
 {
@@ -13,23 +17,77 @@ class ProductCategoryController extends Controller
      */
     public function index() : View
     {
-        return view('admin.product.category.index');
+        $categories = ProductCategory::all();
+        return view('admin.product.category.index', compact('categories'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
-        //
+        return view('admin.product.category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => 'required|max:100|unique:product_categories,name',
+        ]);
+
+        ProductCategory::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name, '-', 'id'),
+        ]);
+
+        Alert::success('Sukses', 'Kategori produk baru telah ditambahkan');
+        return to_route('admin.product-category.index');
+    }
+
+    public function updateStatus(Request $request) : RedirectResponse
+    {
+        $productCategory = ProductCategory::findOrFail($request->id);
+
+        switch ($productCategory->status) {
+            case 1:
+                $productCategory->status = 0;
+                break;
+            case 0:
+                $productCategory->status = 1;
+                break;
+            default:
+                break;
+        }
+
+        $productCategory->save();
+
+        Alert::success('Sukses', 'Status untuk kategori produk yang dipilih telah diperbarui');
+        return back();
+    }
+
+
+    public function updateShowAtHome(Request $request) : RedirectResponse
+    {
+        $productCategory = ProductCategory::findOrFail($request->id);
+
+        switch ($productCategory->show_at_home) {
+            case 1:
+                $productCategory->show_at_home = 0;
+                break;
+            case 0:
+                $productCategory->show_at_home = 1;
+                break;
+            default:
+                break;
+        }
+
+        $productCategory->save();
+
+        Alert::success('Sukses', 'Status untuk menampilkan kategori produk yang dipilih pada homepage telah diperbarui');
+        return back();
     }
 
     /**

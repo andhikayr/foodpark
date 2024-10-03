@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug');
             $table->boolean('status')->default(1);
             $table->boolean('show_at_home')->default(0);
@@ -67,10 +67,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_categories');
-        Schema::dropIfExists('products');
-        Schema::dropIfExists('product_galleries');
-        Schema::dropIfExists('product_sizes');
         Schema::dropIfExists('product_options');
+        Schema::dropIfExists('product_sizes');
+        Schema::dropIfExists('product_galleries');
+        Schema::dropIfExists('products');
+        Schema::dropIfExists('product_categories');
     }
 };
