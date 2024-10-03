@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\WhyChooseUsController;
@@ -28,4 +29,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(
     Route::put('why-choose-us/title-update', [WhyChooseUsController::class, 'updateTitle'])->name('why-choose-us.title-update');
     Route::put('why-choose-us/status/{id}', [WhyChooseUsController::class, 'updateStatus'])->name('why-choose-us.status');
     Route::resource('why-choose-us', WhyChooseUsController::class);
+
+    Route::resource('product-category', ProductCategoryController::class);
 });
