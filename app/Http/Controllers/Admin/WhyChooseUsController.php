@@ -95,8 +95,8 @@ class WhyChooseUsController extends Controller
     public function updateTitle(Request $request) : RedirectResponse
     {
         $request->validate([
-            'title' => 'nullable|max:100',
-            'sub_title' => 'nullable|max:255',
+            'title' => 'nullable|max:50',
+            'sub_title' => 'nullable|max:150',
             'description' => 'nullable',
         ]);
 

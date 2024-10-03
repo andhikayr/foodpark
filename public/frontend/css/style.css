@@ -1099,6 +1099,7 @@ button {
     padding: 35px;
     border-radius: 10px;
     position: relative;
+    height: 220px;
 }
 
 .fp__choose_single .icon {
@@ -1132,10 +1133,6 @@ button {
 }
 
 .fp__choose_single .text p {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
     color: var(--colorWhite);
     text-align: center;
 }
@@ -1586,7 +1583,7 @@ button {
 
 
 /*============================
-    OFFER SLIDER START 
+    OFFER SLIDER START
 ============================*/
 .fp__add_slider {
     background: #f86f031a;

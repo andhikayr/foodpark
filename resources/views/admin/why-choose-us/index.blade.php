@@ -44,13 +44,13 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="why_choose_us_title" class="form-label">Judul</label>
-                                                    <input type="text" id="why_choose_us_title" name="why_choose_us_title" class="form-control" placeholder="Judul" maxlength="100" value="{{ @$title['why_choose_us_title'] }}">
+                                                    <input type="text" id="why_choose_us_title" name="why_choose_us_title" class="form-control" placeholder="Judul" maxlength="50" value="{{ @$title['why_choose_us_title'] }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="why_choose_us_sub_title" class="form-label">Sub Judul</label>
-                                                    <input type="text" id="why_choose_us_sub_title" name="why_choose_us_sub_title" class="form-control" placeholder="Sub Judul" maxlength="255" value="{{ @$title['why_choose_us_sub_title'] }}">
+                                                    <input type="text" id="why_choose_us_sub_title" name="why_choose_us_sub_title" class="form-control" placeholder="Sub Judul" maxlength="150" value="{{ @$title['why_choose_us_sub_title'] }}">
                                                 </div>
                                             </div>
                                         </div>
