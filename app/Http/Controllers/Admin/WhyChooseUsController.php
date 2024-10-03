@@ -88,6 +88,7 @@ class WhyChooseUsController extends Controller
     {
         $whyChooseUs = WhyChooseUs::findOrFail($id);
         $whyChooseUs->update($whyChooseUsRequest->validated());
+
         Alert::success('Sukses', 'Card (mengapa memilih kita) yang dipilih telah diperbarui');
         return to_route('admin.why-choose-us.index');
     }

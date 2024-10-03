@@ -18,6 +18,7 @@ class ProductCategoryController extends Controller
     public function index() : View
     {
         $categories = ProductCategory::all();
+        confirmDelete('Hapus kategori produk', 'Yakin ingin menghapus kategori produk yang dipilih ? Kategori produk yang terhapus tidak dapat dikembalikan');
         return view('admin.product.category.index', compact('categories'));
     }
 
@@ -103,7 +104,8 @@ class ProductCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $productCategory = ProductCategory::findOrFail($id);
+        return view('admin.product.category.edit', compact('productCategory'));
     }
 
     /**
@@ -111,7 +113,18 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => "required|max:100|unique:product_categories,name,$id",
+        ]);
+
+        $productCategory = ProductCategory::findOrFail($id);
+        $productCategory->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name, '-', 'id'),
+        ]);
+
+        Alert::success('Sukses', 'Kategori produk baru telah berhasil diubah');
+        return to_route('admin.product-category.index');
     }
 
     /**
@@ -119,6 +132,10 @@ class ProductCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $productCategory = ProductCategory::findOrFail($id);
+        $productCategory->delete();
+
+        Alert::success('Sukses', 'Kategori produk yang dipilih telah di hapus');
+        return back();
     }
 }
