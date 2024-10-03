@@ -27,8 +27,6 @@
         <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Dropify css -->
         <link href="{{ asset('admin/assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet">
-        <!-- Iconpicker css -->
-        <link href="{{ asset('admin/assets/libs/IconPicker/iconpicker-1.5.0.css') }}" rel="stylesheet">
         <!-- Datatables css -->
         <link href="{{ asset('admin/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
         <link href="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet">
@@ -40,6 +38,8 @@
 
         <!-- Head js -->
         <script src="{{ asset('admin/assets/js/head.js') }}"></script>
+
+        @stack('styles')
 
     </head>
 
@@ -136,9 +136,6 @@
 
         <!-- Toastr js -->
         <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
-
-        <!-- Iconpicker js -->
-        <script src="{{ asset('admin/assets/libs/IconPicker/iconpicker-1.5.0.js') }}"></script>
 
         <!-- Select2 js -->
         <script src="{{ asset('admin/assets/libs/select2/js/select2.min.js') }}"></script>
