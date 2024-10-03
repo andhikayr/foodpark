@@ -21,6 +21,7 @@ class WhyChooseUsController extends Controller
         $keys = ['why_choose_us_title', 'why_choose_us_sub_title', 'why_choose_us_description'];
         $title = SectionTitle::whereIn('key', $keys)->pluck('value', 'key')->toArray();
         $whyChooseUs = WhyChooseUs::all();
+        confirmDelete('Hapus card (mengapa memilih kita)', 'Yakin ingin menghapus card (mengapa memilih kita) yang dipilih ? Card (mengapa memilih kita) yang terhapus tidak dapat dikembalikan');
         return view('admin.why-choose-us.index', compact('title', 'whyChooseUs'));
     }
 
@@ -76,15 +77,19 @@ class WhyChooseUsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $whyChooseUs = WhyChooseUs::findOrFail($id);
+        return view('admin.why-choose-us.edit', compact('whyChooseUs'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(WhyChooseUsRequest $whyChooseUsRequest, string $id)
     {
-        //
+        $whyChooseUs = WhyChooseUs::findOrFail($id);
+        $whyChooseUs->update($whyChooseUsRequest->validated());
+        Alert::success('Sukses', 'Card (mengapa memilih kita) yang dipilih telah diperbarui');
+        return to_route('admin.why-choose-us.index');
     }
 
     public function updateTitle(Request $request) : RedirectResponse
@@ -119,6 +124,9 @@ class WhyChooseUsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $whyChooseUs = WhyChooseUs::findOrFail($id);
+        $whyChooseUs->delete();
+        Alert::success('Sukses', 'Card (mengapa memilih kita) yang dipilih berhasil di hapus');
+        return back();
     }
 }

@@ -132,6 +132,6 @@ class SliderController extends Controller
         }
         $slider->delete();
         Alert::success('Sukses', 'Produk (slider) yang anda pilih berhasil di hapus');
-        return to_route('admin.slider.index');
+        return back();
     }
 }
