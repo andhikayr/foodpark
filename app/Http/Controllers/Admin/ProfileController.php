@@ -26,8 +26,8 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         if ($request->hasFile('avatar')) {
-            if ($user->avatar && file_exists('admin/uploads/profile_images/' . $user->avatar)) {
-                unlink('admin/uploads/profile_images/' . $user->avatar);
+            if ($user->avatar && file_exists("admin/uploads/profile_images/$user->avatar")) {
+                unlink("admin/uploads/profile_images/$user->avatar");
             }
             $avatar = $request->file('avatar');
             $avatarName = 'profile_image_' . date('YmdHis') . '.' . $avatar->extension();
