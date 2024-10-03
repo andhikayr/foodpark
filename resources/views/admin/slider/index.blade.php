@@ -60,7 +60,7 @@
                                             <form action="{{ route('admin.slider.status', $item->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('PUT')
-                                                <button class="btn btn-{{ $item->status == 1 ? 'danger' : 'success' }} btn-sm" title="{{ $item->status == 1 ? 'Nonaktifkan produk ini' : 'Aktifkan produk ini' }}" type="submit">
+                                                <button class="btn btn-{{ $item->status == 1 ? 'danger' : 'success' }} btn-sm" title="{{ $item->status == 1 ? 'Nonaktifkan produk (slider) ini' : 'Aktifkan produk (slider) ini' }}" type="submit">
                                                     <i class="fas fa-{{ $item->status == 1 ? 'times' : 'check' }}"></i>
                                                 </button>
                                             </form>

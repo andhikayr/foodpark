@@ -76,7 +76,49 @@
                         <a href="{{ route('admin.why-choose-us.create') }}" class="btn btn-primary">Tambah Card "Mengapa Memilih Kita"</a>
                     </div>
                     <div class="card-body">
+                        <div class="card-body table-responsive">
+                            <table id="basic-datatable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Ikon</th>
+                                        <th>Judul</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($whyChooseUs as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td><i style="transform: scale(2);" class="{{ $item->icon }}"></i></td>
+                                            <td>{{ $item->title }}</td>
+                                            <td>
+                                                @if ($item->status == 1)
+                                                    <span class="badge bg-success">Aktif</span>
+                                                @else
+                                                    <span class="badge bg-danger">Tidak Aktif</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('admin.why-choose-us.status', $item->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button class="btn btn-{{ $item->status == 1 ? 'danger' : 'success' }} btn-sm" title="{{ $item->status == 1 ? 'Nonaktifkan card ini' : 'Aktifkan card ini' }}" type="submit">
+                                                        <i class="fas fa-{{ $item->status == 1 ? 'times' : 'check' }}"></i>
+                                                    </button>
+                                                </form>
+                                                <a href="{{ route('admin.why-choose-us.edit', $item->id) }}"
+                                                    class="btn btn-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ route('admin.why-choose-us.destroy', $item->id) }}"
+                                                    class="btn btn-danger btn-sm" data-confirm-delete="true" title="Hapus"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
 
+                        </div> <!-- end card body-->
                     </div>
                 </div>
             </div>
@@ -84,3 +126,13 @@
 
     </div> <!-- container -->
 @endsection
+
+@push('scripts')
+    <script>
+        $('#basic-datatable').DataTable({
+            "language": {
+                url: '{{ asset("admin/assets/libs/datatables.net/id.json") }}',
+            },
+        });
+    </script>
+@endpush

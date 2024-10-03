@@ -20,7 +20,8 @@ class WhyChooseUsController extends Controller
     {
         $keys = ['why_choose_us_title', 'why_choose_us_sub_title', 'why_choose_us_description'];
         $title = SectionTitle::whereIn('key', $keys)->pluck('value', 'key')->toArray();
-        return view('admin.why-choose-us.index', compact('title'));
+        $whyChooseUs = WhyChooseUs::all();
+        return view('admin.why-choose-us.index', compact('title', 'whyChooseUs'));
     }
 
     /**
@@ -39,6 +40,27 @@ class WhyChooseUsController extends Controller
         WhyChooseUs::create($whyChooseUsRequest->validated());
         Alert::success('Sukses', 'Card (mengapa memilih kita) baru berhasil ditambahkan');
         return to_route('admin.why-choose-us.index');
+    }
+
+    public function updateStatus(Request $request) : RedirectResponse
+    {
+        $whyChooseUs = WhyChooseUs::findOrFail($request->id);
+
+        switch ($whyChooseUs->status) {
+            case 1:
+                $whyChooseUs->status = 0;
+                break;
+            case 0:
+                $whyChooseUs->status = 1;
+                break;
+            default:
+                break;
+        }
+
+        $whyChooseUs->save();
+
+        Alert::success('Sukses', 'Status untuk card (mengapa memilih kita) yang dipilih telah diperbarui');
+        return back();
     }
 
     /**
