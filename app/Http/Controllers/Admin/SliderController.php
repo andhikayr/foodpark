@@ -131,6 +131,7 @@ class SliderController extends Controller
             unlink("admin/uploads/slider_images/$slider->image");
         }
         $slider->delete();
+
         Alert::success('Sukses', 'Produk (slider) yang anda pilih berhasil di hapus');
         return back();
     }

@@ -126,6 +126,7 @@ class WhyChooseUsController extends Controller
     {
         $whyChooseUs = WhyChooseUs::findOrFail($id);
         $whyChooseUs->delete();
+
         Alert::success('Sukses', 'Card (mengapa memilih kita) yang dipilih berhasil di hapus');
         return back();
     }
