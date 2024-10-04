@@ -34,19 +34,19 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Judul *</label>
-                                        <input type="text" id="title" name="title" class="form-control" placeholder="Judul" maxlength="255" required>
+                                        <input type="text" id="title" name="title" class="form-control" placeholder="Judul" maxlength="255" value="{{ old('title') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sub_title" class="form-label">Sub Judul *</label>
-                                        <input type="text" id="sub_title" name="sub_title" class="form-control" placeholder="Sub Judul" maxlength="255" required>
+                                        <input type="text" id="sub_title" name="sub_title" class="form-control" placeholder="Sub Judul" maxlength="255" value="{{ old('sub_title') }}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Deskripsi *</label>
-                                <input type="text" id="description" name="description" class="form-control" placeholder="Deskripsi" required>
+                                <input type="text" id="description" name="description" class="form-control" placeholder="Deskripsi" value="{{ old('description') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Gambar Produk *</label>
@@ -58,7 +58,7 @@
                                     <div class="mb-3">
                                         <label for="offer" class="form-label">Diskon (Persentase)</label>
                                         <div class="input-group">
-                                            <input type="number" id="offer" name="offer" class="form-control" placeholder="Diskon (Persentase)" min="1" max="100">
+                                            <input type="number" id="offer" name="offer" class="form-control" placeholder="Diskon (Persentase)" min="1" max="100" value="{{ old('offer') }}" required>
                                             <span class="input-group-text">%</span>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="button_link" class="form-label">Link (Tombol) *</label>
-                                        <input type="text" id="button_link" name="button_link" class="form-control" placeholder="Link (Tombol)" maxlength="255" required>
+                                        <input type="text" id="button_link" name="button_link" class="form-control" placeholder="Link (Tombol)" maxlength="255" value="{{ old('button_link') }}" required>
                                     </div>
                                 </div>
                             </div>

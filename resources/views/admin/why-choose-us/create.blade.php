@@ -41,11 +41,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Judul *</label>
-                                <input type="text" id="title" name="title" class="form-control" placeholder="Judul" maxlength="100" required>
+                                <input type="text" id="title" name="title" class="form-control" placeholder="Judul" maxlength="100" value="{{ old('title') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="short_description" class="form-label">Deskripsi Singkat *</label>
-                                <input type="text" id="short_description" name="short_description" class="form-control" placeholder="Deskripsi Singkat" maxlength="255" required>
+                                <input type="text" id="short_description" name="short_description" class="form-control" placeholder="Deskripsi Singkat" maxlength="255" value="{{ old('short_description') }}" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </form>
