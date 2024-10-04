@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductCreateRequest;
+use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -29,9 +33,30 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductCreateRequest $productCreateRequest) : RedirectResponse
     {
-        //
+        if ($productCreateRequest->hasFile('thumb_image')) {
+            $image = $productCreateRequest->file('thumb_image');
+            $imageName = 'product_image_' . date('YmdHis') . '.' . $image->extension();
+            $image->move('admin/uploads/product_images', $imageName);
+        }
+
+        Product::create([
+            'thumb_image' => $imageName,
+            'name' => $productCreateRequest->name,
+            'slug' => generateUniqueSlug('Product', $productCreateRequest->name),
+            'category_id' => $productCreateRequest->category_id,
+            'price' => $productCreateRequest->price,
+            'offer_price' => $productCreateRequest->offer_price,
+            'short_description' => $productCreateRequest->short_description,
+            'description' => $productCreateRequest->description,
+            'sku' => $productCreateRequest->sku,
+            'seo_title' => $productCreateRequest->seo_title,
+            'seo_description' => $productCreateRequest->seo_description,
+        ]);
+
+        Alert::success('Sukses', 'Produk baru berhasil ditambahkan');
+        return to_route('admin.product.index');
     }
 
     /**

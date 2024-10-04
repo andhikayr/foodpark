@@ -28,7 +28,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.product.store') }}" method="POST">
+                        <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="thumb_image" class="form-label">Gambar Produk (Thumbnail) *</label>
