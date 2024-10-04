@@ -42,7 +42,7 @@
                                 <a href="{{ route('admin.product-category.index') }}">Kategori Produk</a>
                             </li>
                             <li>
-                                <a href="ecommerce-products.html">Products</a>
+                                <a href="{{ route('admin.product.index') }}">Products</a>
                             </li>
                         </ul>
                     </div>

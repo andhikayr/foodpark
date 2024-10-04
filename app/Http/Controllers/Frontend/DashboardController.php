@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,7 @@ class DashboardController extends Controller
         return back();
     }
 
-    public function updateAvatar(Request $request) {
+    public function updateAvatar(Request $request) : JsonResponse {
         $request->validate([
             'avatar' => 'required|image|max:2048|mimes:png,jpg,jpeg',
         ]);

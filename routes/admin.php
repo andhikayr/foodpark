@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\WhyChooseUsController;
@@ -35,4 +36,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(
     Route::put('product-category/status/{id}', [ProductCategoryController::class, 'updateStatus'])->name('product-category.status');
     Route::put('product-category/show-at-home/{id}', [ProductCategoryController::class, 'updateShowAtHome'])->name('product-category.show-at-home');
     Route::resource('product-category', ProductCategoryController::class);
+
+    // Produk
+    Route::resource('product', ProductController::class);
+
 });

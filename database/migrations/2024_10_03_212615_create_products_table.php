@@ -30,7 +30,7 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('price');
             $table->integer('offer_price')->nullable();
-            $table->string('sku');
+            $table->string('sku')->nullable();
             $table->boolean('status')->default(1);
             $table->boolean('show_at_home')->default(0);
             $table->string('seo_title')->nullable();

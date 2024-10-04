@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use App\Models\Slider;
 use App\Models\WhyChooseUs;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
         ]);
         Slider::factory(3)->create();
         WhyChooseUs::factory(3)->create();
+        Product::factory(5)->create();
     }
 }
