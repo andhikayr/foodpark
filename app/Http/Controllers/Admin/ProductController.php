@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,10 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
-        //
+        $productCategories = ProductCategory::all();
+        return view('admin.product.create', compact('productCategories'));
     }
 
     /**
