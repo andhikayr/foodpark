@@ -21,8 +21,6 @@
         <link href="{{ asset('admin/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style"/>
         <!-- Toastr css -->
         <link href="{{ asset('admin/assets/libs/toastr/build/toastr.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- fontawesome 5.11.2 -->
-        <link href="{{ asset('admin/assets/libs/font-awesome-5.11.2/all.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Icons css -->
         <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Dropify css -->
@@ -137,20 +135,11 @@
         <!-- Toastr js -->
         <script src="{{ asset('admin/assets/libs/toastr/build/toastr.min.js') }}"></script>
 
-        <!-- Select2 js -->
-        <script src="{{ asset('admin/assets/libs/select2/js/select2.min.js') }}"></script>
-
-        <!-- Summernote js -->
-        <script src="{{ asset('admin/assets/libs/summernote/summernote-lite.min.js') }}"></script>
-
         <!-- Datatables js -->
         <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
         <script src="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
-
-        <!-- Init form advanced js-->
-        <script src="{{ asset('admin/assets/js/pages/form-advanced.init.js') }}"></script>
 
         <script>
             // Terapkan pengaturan tema yang disimpan sebelum halaman selesai dimuat
