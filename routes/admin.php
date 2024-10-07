@@ -38,6 +38,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->as('admin.')->group(
     Route::resource('product-category', ProductCategoryController::class);
 
     // Produk
+    Route::put('product/status/{id}', [ProductController::class, 'updateStatus'])->name('product.status');
+    Route::put('product/show-at-home/{id}', [ProductController::class, 'updateShowAtHome'])->name('product.show-at-home');
     Route::resource('product', ProductController::class);
-
 });

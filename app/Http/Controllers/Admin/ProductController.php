@@ -18,7 +18,8 @@ class ProductController extends Controller
      */
     public function index() : View
     {
-        return view('admin.product.index');
+        $products = Product::all();
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -57,6 +58,49 @@ class ProductController extends Controller
 
         Alert::success('Sukses', 'Produk baru berhasil ditambahkan');
         return to_route('admin.product.index');
+    }
+
+    public function updateStatus(Request $request) : RedirectResponse
+    {
+        $product = Product::findOrFail($request->id);
+
+        switch ($product->status) {
+            case 1:
+                $product->status = 0;
+                break;
+            case 0:
+                $product->status = 1;
+                break;
+            default:
+                break;
+        }
+
+        $product->save();
+
+        Alert::success('Sukses', 'Status untuk produk yang dipilih telah diperbarui');
+        return back();
+    }
+
+
+    public function updateShowAtHome(Request $request) : RedirectResponse
+    {
+        $product = Product::findOrFail($request->id);
+
+        switch ($product->show_at_home) {
+            case 1:
+                $product->show_at_home = 0;
+                break;
+            case 0:
+                $product->show_at_home = 1;
+                break;
+            default:
+                break;
+        }
+
+        $product->save();
+
+        Alert::success('Sukses', 'Status untuk menampilkan produk yang dipilih pada homepage telah diperbarui');
+        return back();
     }
 
     /**
