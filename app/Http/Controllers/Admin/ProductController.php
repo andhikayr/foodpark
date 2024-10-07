@@ -77,7 +77,17 @@ class ProductController extends Controller
 
         $product->save();
 
-        Alert::success('Sukses', 'Status untuk produk yang dipilih telah diperbarui');
+        switch ($product->status) {
+            case 1:
+                Alert::success('Sukses', 'Status untuk produk yang dipilih telah diaktifkan');
+                break;
+            case 0:
+                Alert::success('Sukses', 'Status untuk produk yang dipilih telah dinonaktifkan');
+                break;
+            default:
+                break;
+        }
+
         return back();
     }
 
@@ -99,7 +109,17 @@ class ProductController extends Controller
 
         $product->save();
 
-        Alert::success('Sukses', 'Status untuk menampilkan produk yang dipilih pada homepage telah diperbarui');
+        switch ($product->show_at_home) {
+            case 1:
+                Alert::success('Sukses', 'Status untuk menampilkan produk yang dipilih pada homepage telah diizinkan');
+                break;
+            case 0:
+                Alert::success('Sukses', 'Status untuk menampilkan produk yang dipilih pada homepage tidak diizinkan');
+                break;
+            default:
+                break;
+        }
+
         return back();
     }
 

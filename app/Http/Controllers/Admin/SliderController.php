@@ -72,7 +72,17 @@ class SliderController extends Controller
 
         $slider->save();
 
-        Alert::success('Sukses', 'Status untuk produk yang dipilih telah diperbarui');
+        switch ($slider->status) {
+            case 1:
+                Alert::success('Sukses', 'Status untuk produk (slider) yang dipilih telah diaktifkan');
+                break;
+            case 0:
+                Alert::success('Sukses', 'Status untuk produk (slider) yang dipilih telah dinonaktifkan');
+                break;
+            default:
+                break;
+        }
+
         return back();
     }
 

@@ -60,7 +60,17 @@ class WhyChooseUsController extends Controller
 
         $whyChooseUs->save();
 
-        Alert::success('Sukses', 'Status untuk card (mengapa memilih kita) yang dipilih telah diperbarui');
+        switch ($whyChooseUs->status) {
+            case 1:
+                Alert::success('Sukses', 'Status untuk card (mengapa memilih kita) yang dipilih telah diaktifkan');
+                break;
+            case 0:
+                Alert::success('Sukses', 'Status untuk card (mengapa memilih kita) yang dipilih telah dinonaktifkan');
+                break;
+            default:
+                break;
+        }
+
         return back();
     }
 
