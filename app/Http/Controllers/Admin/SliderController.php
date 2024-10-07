@@ -142,7 +142,7 @@ class SliderController extends Controller
         }
         $slider->delete();
 
-        Alert::success('Sukses', 'Produk (slider) yang anda pilih berhasil di hapus');
+        Alert::success('Sukses', 'Produk (slider) yang anda pilih berhasil dihapus');
         return back();
     }
 }

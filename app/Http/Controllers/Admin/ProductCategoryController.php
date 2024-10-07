@@ -156,7 +156,7 @@ class ProductCategoryController extends Controller
         $productCategory = ProductCategory::findOrFail($id);
         $productCategory->delete();
 
-        Alert::success('Sukses', 'Kategori produk yang dipilih telah di hapus');
+        Alert::success('Sukses', 'Kategori produk yang dipilih telah dihapus');
         return back();
     }
 }
