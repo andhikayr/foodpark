@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductEditRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Contracts\View\View;
@@ -19,6 +20,7 @@ class ProductController extends Controller
     public function index() : View
     {
         $products = Product::all();
+        confirmDelete('Hapus produk', 'Yakin ingin menghapus produk yang dipilih ? Produk yang terhapus tidak dapat dikembalikan');
         return view('admin.product.index', compact('products'));
     }
 
@@ -134,24 +136,60 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id) : View
     {
-        //
+        $product = Product::findOrFail($id);
+        $productCategories = ProductCategory::all();
+        return view('admin.product.edit', compact('product', 'productCategories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductEditRequest $productEditRequest, string $id) : RedirectResponse
     {
-        //
+        $product = Product::findOrFail($id);
+
+        if ($productEditRequest->hasFile('thumb_image')) {
+            if ($product->thumb_image && file_exists("admin/uploads/product_images/$product->thumb_image")) {
+                unlink("admin/uploads/product_images/$product->thumb_image");
+            }
+            $image = $productEditRequest->file('thumb_image');
+            $imageName = 'product_image_' . date('YmdHis') . '.' . $image->extension();
+            $image->move('admin/uploads/product_images', $imageName);
+        }
+
+        $product->update([
+            'thumb_image' => $imageName,
+            'name' => $productEditRequest->name,
+            'slug' => generateUniqueSlug('Product', $productEditRequest->name),
+            'category_id' => $productEditRequest->category_id,
+            'price' => $productEditRequest->price,
+            'offer_price' => $productEditRequest->offer_price,
+            'short_description' => $productEditRequest->short_description,
+            'description' => $productEditRequest->description,
+            'sku' => $productEditRequest->sku,
+            'seo_title' => $productEditRequest->seo_title,
+            'seo_description' => $productEditRequest->seo_description,
+        ]);
+
+        Alert::success('Sukses', 'Produk telah berhasil diubah');
+        return to_route('admin.product.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : RedirectResponse
     {
-        //
+        $product = Product::findOrFail($id);
+
+        if ($product->thumb_image && file_exists("admin/uploads/product_images/$product->thumb_image")) {
+            unlink("admin/uploads/product_images/$product->thumb_image");
+        }
+        $product->delete();
+
+        Alert::success('Sukses', 'Produk telah dihapus');
+        return back();
     }
 }
